@@ -37,6 +37,10 @@ const config = [
     label: 'physical',
     render: (data) => data.spheres.physical,
   },
+  {
+    label: 'score',
+    render: (data) => Object.values(data.spheres).reduce((a,b) => a + b)
+  },
 ]
 
 function Table() {
