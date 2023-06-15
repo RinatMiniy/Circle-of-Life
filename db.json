@@ -1,30 +1,32 @@
 {
   "data":[
       {
-        "month":"January",
-          "spheres":{
-            "Hobby": 1,
-            "Work": 1,
-            "Family": 1,
-            "Friends": 1,
-            "Rest": 1,
-            "Self-development": 1,
-            "Spiritual": 1,
-            "Physical": 1
-          }
+        "monthName":"January",
+        "spheres":{
+          "hobby": 1,
+          "work": 1,
+          "family": 1,
+          "friends": 1,
+          "rest": 1,
+          "selfDevelopment": 1,
+          "spiritual": 1,
+          "physical": 1
+        },
+        "id": 1
       },
       {
-        "month":"February",
-          "spheres":{
-            "Hobby": 1,
-            "Work": 1,
-            "Family": 1,
-            "Friends": 1,
-            "Rest": 1,
-            "Self-development": 1,
-            "Spiritual": 1,
-            "Physical": 1
-          }
+        "monthName":"February",
+        "spheres":{
+          "hobby": 1,
+          "work": 1,
+          "family": 1,
+          "friends": 1,
+          "rest": 1,
+          "selfDevelopment": 1,
+          "spiritual": 1,
+          "physical": 1
+        },
+        "id": 2
       }
   ]
 }

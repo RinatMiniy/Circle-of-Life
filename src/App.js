@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import Table from "./components/Table";
 import { fetchMonthsData } from "./store/monthsDataSlice";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <Table/>
     </div>
   );
 }
