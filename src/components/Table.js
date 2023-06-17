@@ -8,36 +8,36 @@ const config = [
   },
   {
     label: 'work',
-    render: (data) => <Cell startValue={data.spheres.work}/>,
+    render: (data) => <Cell sphere = "work" startValue={data.spheres.work} monthData = {data}/>,
   },
   {
     label: 'hobby',
-    render: (data) => <Cell startValue={data.spheres.hobby}/>,
+    render: (data) => <Cell sphere = "hobby" startValue={data.spheres.hobby} monthData = {data}/>,
   },
-  {
-    label: 'family',
-    render: (data) => <Cell startValue={data.spheres.family}/>,
-  },
-  {
-    label: 'friends',
-    render: (data) => <Cell startValue={data.spheres.friends}/>,
-  },
-  {
-    label: 'rest',
-    render: (data) => <Cell startValue={data.spheres.rest}/>,
-  },
-  {
-    label: 'self-development',
-    render: (data) => <Cell startValue={data.spheres.selfDevelopment}/>,
-  },
-  {
-    label: 'spiritual',
-    render: (data) => <Cell startValue={data.spheres.spiritual}/>,
-  },
-  {
-    label: 'physical',
-    render: (data) => <Cell startValue={data.spheres.physical}/>,
-  },
+  // {
+  //   label: 'family',
+  //   render: (data) => <Cell startValue={data.spheres.family}/>,
+  // },
+  // {
+  //   label: 'friends',
+  //   render: (data) => <Cell startValue={data.spheres.friends}/>,
+  // },
+  // {
+  //   label: 'rest',
+  //   render: (data) => <Cell startValue={data.spheres.rest}/>,
+  // },
+  // {
+  //   label: 'self-development',
+  //   render: (data) => <Cell startValue={data.spheres.selfDevelopment}/>,
+  // },
+  // {
+  //   label: 'spiritual',
+  //   render: (data) => <Cell startValue={data.spheres.spiritual}/>,
+  // },
+  // {
+  //   label: 'physical',
+  //   render: (data) => <Cell startValue={data.spheres.physical}/>,
+  // },
   {
     label: 'score',
     render: (data) => <th>{Object.values(data.spheres).reduce((a,b) => a + b)}</th>

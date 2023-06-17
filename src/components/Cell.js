@@ -1,10 +1,24 @@
 import { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux";
+import { updateMonthsData } from "../store/monthsDataSlice";
 
-function Cell({startValue}) {
+function Cell({startValue, monthData, sphere}) {
   const [editValue, setEditValue] = useState(false)
-  const [value, setValue] = useState(startValue)
-  const cellRef = useRef(null);
-  console.log(cellRef.current, 'cellRef.current')
+  const [inputValue, setInputValue] = useState(startValue)
+  const cellRef = useRef();
+  const dispatch = useDispatch()
+
+  const newData = {
+    ...monthData,
+    spheres: {
+      ...monthData.spheres,
+      [sphere]: Number(inputValue)
+    }
+  };
+
+  console.log(newData, "newData")
+
+
   useEffect(() => {
     if(!editValue)
       return
@@ -12,6 +26,10 @@ function Cell({startValue}) {
     const handleClickOutside = (event) => {
       if (!cellRef.current.contains(event.target)) {
         setEditValue(false);
+        console.log(inputValue, "inputValue")
+        
+
+        dispatch(updateMonthsData(newData))
       }
     };
 
@@ -21,20 +39,15 @@ function Cell({startValue}) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [editValue]);
-  // useEffect(() => {
-  //   if (editValue) {
-  //     document.addEventListener("click", )
-  //   }
-  // }, [editValue])
 
   const handleClick = () => {
     setEditValue(true)
   }
 
-  let content = value
+  let content = inputValue
 
   if (editValue) {
-    content = <input value = {value} onChange = {(e) => setValue(e.target.value)}/>
+    content = <input value = {inputValue} onChange = {(e) => setInputValue(e.target.value)}/>
   }
   return(
     <th onClick={handleClick} ref={cellRef}>
