@@ -8,17 +8,6 @@ function Cell({startValue, monthData, sphere}) {
   const cellRef = useRef();
   const dispatch = useDispatch()
 
-  const newData = {
-    ...monthData,
-    spheres: {
-      ...monthData.spheres,
-      [sphere]: Number(inputValue)
-    }
-  };
-
-  console.log(newData, "newData")
-
-
   useEffect(() => {
     if(!editValue)
       return
@@ -26,9 +15,20 @@ function Cell({startValue, monthData, sphere}) {
     const handleClickOutside = (event) => {
       if (!cellRef.current.contains(event.target)) {
         setEditValue(false);
-        console.log(inputValue, "inputValue")
-        
 
+        if (inputValue < 0 || inputValue > 10) {
+          setInputValue(startValue)
+          return
+        }
+
+        const newData = {
+          ...monthData,
+          spheres: {
+            ...monthData.spheres,
+            [sphere]: Number(inputValue)
+          }
+        };
+        
         dispatch(updateMonthsData(newData))
       }
     };
@@ -38,7 +38,7 @@ function Cell({startValue, monthData, sphere}) {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [editValue]);
+  }, [editValue, inputValue]);
 
   const handleClick = () => {
     setEditValue(true)
@@ -47,7 +47,13 @@ function Cell({startValue, monthData, sphere}) {
   let content = inputValue
 
   if (editValue) {
-    content = <input value = {inputValue} onChange = {(e) => setInputValue(e.target.value)}/>
+    content = <input
+      type = "number"
+      value = {inputValue}
+      onChange = {(e) => setInputValue(e.target.value)}
+      max = "10"
+      min = "0"
+    />
   }
   return(
     <th onClick={handleClick} ref={cellRef}>

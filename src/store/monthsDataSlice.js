@@ -7,9 +7,7 @@ const fetchMonthsData = createAsyncThunk("monthsData/get", async () => {
 })
 
 const updateMonthsData = createAsyncThunk("monthsData/update", async (newData) => {
-  console.log(newData, "monthData")
-
-  const response = await fetch(`http://localhost:3002/data/${2}`, {
+  const response = await fetch(`http://localhost:3002/data/${newData.id}`, {
     method: "PUT",
     headers: {
         "Content-Type": "application/json",
@@ -17,7 +15,7 @@ const updateMonthsData = createAsyncThunk("monthsData/update", async (newData) =
     body: JSON.stringify(newData),
 });
 const data = await response.text()
-console.log(data, 'kkkk')
+
 return data;
 })
 
@@ -29,8 +27,8 @@ const monthsDataSlice = createSlice({
       state.push(...action.payload)
     });
     builder.addCase(updateMonthsData.fulfilled, (state, action) => {
-      console.log(action.payload, "action.payload")
-      // state[state.findIndex((elem) => elem.id === JSON.parse(action.payload).id)] = JSON.parse(action.payload)
+      const payload = JSON.parse(action.payload)
+      state[state.findIndex((elem) => elem.id === payload.id)] = payload
     });
   }
 })
